@@ -1,6 +1,6 @@
 # Privacy Lens
 
-Extensão Firefox para o Roteiro 4 da disciplina Techacker (Insper). Detecta vetores de rastreamento e violação de privacidade em páginas web e calcula um score consolidado.
+Extensão Firefox pque detecta vetores de rastreamento e violação de privacidade em páginas web e calcula um score consolidado.
 
 O que a extensão observa:
 
@@ -11,7 +11,7 @@ O que a extensão observa:
 - cookie syncing entre domínios
 - sinais de hijacking (redirect sem clique, pushState em rajada, script vindo de IP literal, WebSocket suspeito)
 
-A metodologia da nota fica em [`docs/PRIVACY_SCORE.md`](docs/PRIVACY_SCORE.md).
+A metodologia fica em [`docs/PRIVACY_SCORE.md`](docs/PRIVACY_SCORE.md).
 
 ## Estrutura
 
@@ -50,7 +50,7 @@ Para testar:
 
 ## Depuração
 
-- **Background:** `about:debugging` → botão **Inspecionar** ao lado da Privacy Lens.
+- **Background:** `about:debugging` → botão **Inspecionar**.
 - **Content script:** F12 na página, no console troque o contexto de "Top" para "Privacy Lens".
 
 ## Limitações
@@ -59,5 +59,3 @@ Para testar:
 - Cookie syncing usa heurística sobre IDs longos em URLs e pode dar falso positivo com tokens CSRF.
 - O content script roda apenas no top frame, então storage dentro de iframes não é inspecionado.
 - A extensão observa, não bloqueia.
-
-Toda a análise é local — nada é enviado para servidor externo.
