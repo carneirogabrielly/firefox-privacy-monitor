@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+  <title>Privacy Lens</title>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <strong>Privacy Lens</strong>
+      <span id="page-domain" class="domain">—</span>
+    </div>
+    <div id="score-box" class="score">
+      <div class="score-num" id="score-num">—</div>
+      <div class="score-label" id="score-label">aguardando</div>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="overview">Resumo</button>
+    <button class="tab" data-tab="thirdparty">3ª parte</button>
+    <button class="tab" data-tab="cookies">Cookies</button>
+    <button class="tab" data-tab="storage">Storage</button>
+    <button class="tab" data-tab="fingerprint">Fingerprint</button>
+    <button class="tab" data-tab="hijack">Hijack</button>
+  </nav>
+
+  <main>
+    <section id="tab-overview" class="panel active">
+      <ul class="metrics">
+        <li><span class="num" id="m-tp">0</span><span class="lbl">domínios 3ª parte</span></li>
+        <li><span class="num" id="m-cookies">0</span><span class="lbl">cookies (3ª parte)</span></li>
+        <li><span class="num" id="m-storage">0</span><span class="lbl">chaves de storage</span></li>
+        <li><span class="num" id="m-fp">0</span><span class="lbl">vetores fingerprint</span></li>
+        <li><span class="num" id="m-super">0</span><span class="lbl">supercookies</span></li>
+        <li><span class="num" id="m-hijack">0</span><span class="lbl">sinais hijack</span></li>
+      </ul>
+      <h3>Por que esta nota?</h3>
+      <ul id="reasons" class="reasons"></ul>
+    </section>
+
+    <section id="tab-thirdparty" class="panel">
+      <p class="hint">Cada linha = um domínio externo contactado durante a navegação.</p>
+      <table class="data">
+        <thead><tr><th>Domínio</th><th>Recursos</th></tr></thead>
+        <tbody id="tp-body"></tbody>
+      </table>
+    </section>
+
+    <section id="tab-cookies" class="panel">
+      <ul class="metrics small">
+        <li><span class="num" id="c-1p">0</span><span class="lbl">1ª parte</span></li>
+        <li><span class="num" id="c-3p">0</span><span class="lbl">3ª parte</span></li>
+        <li><span class="num" id="c-sess">0</span><span class="lbl">sessão</span></li>
+        <li><span class="num" id="c-pers">0</span><span class="lbl">persistente</span></li>
+        <li><span class="num" id="c-3p-pers">0</span><span class="lbl">3ª parte persist.</span></li>
+        <li><span class="num" id="c-super">0</span><span class="lbl">supercookie</span></li>
+      </ul>
+      <h3>Supercookies detectados</h3>
+      <ul id="super-list" class="samples"></ul>
+      <h3>Cookie syncing</h3>
+      <ul id="sync-list" class="samples"></ul>
+    </section>
+
+    <section id="tab-storage" class="panel">
+      <h3>localStorage</h3>
+      <ul id="ls-list" class="samples"></ul>
+      <h3>sessionStorage</h3>
+      <ul id="ss-list" class="samples"></ul>
+      <h3>IndexedDB</h3>
+      <ul id="idb-list" class="samples"></ul>
+    </section>
+
+    <section id="tab-fingerprint" class="panel">
+      <ul class="metrics small">
+        <li><span class="num" id="fp-canvas">—</span><span class="lbl">Canvas</span></li>
+        <li><span class="num" id="fp-webgl">—</span><span class="lbl">WebGL</span></li>
+        <li><span class="num" id="fp-audio">—</span><span class="lbl">Audio</span></li>
+      </ul>
+      <h3>Últimas chamadas observadas</h3>
+      <ul id="fp-samples" class="samples"></ul>
+    </section>
+
+    <section id="tab-hijack" class="panel">
+      <p class="hint">Sinais de hijacking/hooking: redirects programáticos, listeners abusivos, websockets suspeitos.</p>
+      <ul id="hijack-list" class="samples"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <button id="refresh">Atualizar</button>
+    <button id="reset">Resetar dados desta aba</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

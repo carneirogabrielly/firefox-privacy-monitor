@@ -1,0 +1,53 @@
+{
+  "manifest_version": 2,
+  "name": "Privacy Lens",
+  "version": "0.1.0",
+  "description": "Detecta rastreamento, cookies, storage, fingerprinting e calcula um Privacy Score para a página atual.",
+  "author": "Gabrielly Carneiro",
+
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "cookies",
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+
+  "background": {
+    "scripts": ["lib/etld.js", "lib/score.js", "background/background.js"],
+    "persistent": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+
+  "web_accessible_resources": ["content/injector.js"],
+
+  "browser_action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Privacy Lens",
+    "default_icon": {
+      "48": "icons/icon-48.png"
+    }
+  },
+
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "privacy-lens@insper.local",
+      "strict_min_version": "115.0"
+    }
+  }
+}
